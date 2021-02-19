@@ -44,21 +44,6 @@ function myFunction() {
   wordCount = wordArr.length;
 }
 
-function findMedian() {
-  var medianL = 0;
-  if (wordCount % 2 == 0) {
-    var str = wordArr[wordCount / 2] + "";
-    medianL = str.length;
-    str = wordArr[wordCount / 2 - 1] + "";
-    medianL += str.length;
-    medianL /= 2;
-  } else {
-    let str = wordArr[wordCount / 2] + "";
-    medianL = str.length;
-  }
-  return medianL;
-}
-
 class TextInput extends Component {
   constructor(props) {
     super(props);
@@ -96,7 +81,7 @@ class TextInput extends Component {
       letters: letterCount,
       language: textLanguage,
       longestWord: wordArr[0],
-      medianLength: findMedian(),
+      medianLength: wordArr[(wordCount / 2) | 0].length,
       avarageLength: letterCount / wordCount,
       medianWord: wordArr[(wordCount / 2) | 0] + ""
     });
