@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  position: relative;
 }
 body #root {
   background-color: #ffff;
@@ -60,7 +61,7 @@ body #root .buttons a {
   box-shadow: 0 12px 15px 0 rgb(255 99 142 / 20%);
   margin: 20px;
   color: #fff;
-  background-color: #ff638e;
+  background-color: #222;
 }
 body #root .buttons a:active,
 body #root .buttons a:hover {
@@ -78,8 +79,8 @@ body #root .input-box .warning {
 
 body #root .counter-results {
   background-color: rgba(231, 245, 255, 0.25);
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   margin-bottom: 30px;
 }
 
@@ -99,23 +100,21 @@ body #root .counter-results div span {
 }
 
 body #root .footer-div {
-  background-color: #000;
-  margin-bottom: 100px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background-color: #222;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
-body #root footer span {
+body #root .footer-div footer span {
   display: block;
   padding: 0 0 10px;
 }
-body #root footer a {
-  color: #000;
+body #root .footer-div footer a {
+  color: #fff;
   text-decoration: none;
-}
-body #root footer a:active,
-body #root footer a:hover {
-  color: #222222;
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
 }
 
 .btn {
