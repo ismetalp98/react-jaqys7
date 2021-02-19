@@ -6,22 +6,20 @@ var textLanguage = "tr";
 let hash = {},
   pq = [];
 var wordArr = [];
+let mostUsed = [];
+let calculated = 0;
 
 function myFunction() {
   var x = document.getElementById("text-input-box").value;
-  var wordRegex = /[^a-z\d\s]+/gi;
-  //Get word count without special chars and spaces using regex and set state of 'words'
 
   wordArr =
     x
-      .replace(/[\W]+/g, " ")
-      .replace(/([a-z]+)\b[.,]/g, "") //remove commas & fullstops
-      .replace(wordRegex, "")
-      .split(" ") // split words into array elements
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+      .split(" ")
       .filter(function(x) {
-        // remove empty array eements
         return x !== "";
       }) || [];
+
   for (var i = 0; i < wordArr.length; i++) {
     var str = wordArr[i];
     letterCount += str.length;
@@ -35,6 +33,11 @@ function myFunction() {
   for (let key in hash) pq.push([key, hash[key]]);
   pq.sort((a, b) => b[1] - a[1]);
 
+  for (var i = 0; i < pq.length; i++) {
+    let a = pq[i];
+    let b = a[0] + " occures " + a[1] + " times";
+    mostUsed[i] = b;
+  }
   wordArr.sort(function(a, b) {
     return b.length - a.length;
   });
@@ -43,7 +46,6 @@ function myFunction() {
 
 function findMedian() {
   var medianL = 0;
-  console.log(wordArr[wordCount / 2]);
   if (wordCount % 2 == 0) {
     var str = wordArr[wordCount / 2] + "";
     medianL = str.length;
@@ -76,14 +78,19 @@ class TextInput extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.clearInput = this.clearInput.bind(this);
+    this.clearFln = this.clearFln.bind(this);
   }
 
   handleClick(event) {
-    //Execute when handleClick is called on an element (button)
-    event.preventDefault();
+    if (calculated == 1) {
+      this.clearFln();
+    }
+    calculated = 1;
 
     myFunction();
-
+    if (wordCount == 0) {
+      return this.setState({ warning: this.state.minWords });
+    }
     this.setState({
       words: wordCount,
       letters: letterCount,
@@ -95,17 +102,30 @@ class TextInput extends Component {
     });
   }
 
-  clearInput(event) {
-    //Clear counters and table
+  clearFln(event) {
     letterCount = 0;
-    document.getElementById("text-input-box").value = "";
-    event.preventDefault();
+    wordCount = 0;
+    textLanguage = "tr";
+    hash = {};
+    pq = [];
+    wordArr = [];
+    mostUsed = [];
+    calculated = 0;
     this.setState({
-      letters: 0,
-      words: 0,
-      letters: 0,
+      words: "",
+      letters: "",
+      language: "",
+      longestWord: "",
+      avarageLength: "",
+      medianLength: "",
+      medianWord: "",
       warning: ""
     });
+  }
+
+  clearInput(event) {
+    document.getElementById("text-input-box").value = "";
+    this.clearFln();
   }
 
   render() {
@@ -160,6 +180,23 @@ class TextInput extends Component {
             <div>
               Median Word: <span>{this.state.medianWord} </span>
             </div>
+          </div>
+        </div>
+        <div className="max-table">
+          <div>
+            1. <span>{mostUsed.length > 0 ? mostUsed[0] : "-"} </span>
+          </div>
+          <div>
+            2. <span>{mostUsed.length > 1 ? mostUsed[1] : "-"} </span>
+          </div>
+          <div>
+            3. <span>{mostUsed.length > 2 ? mostUsed[2] : "-"} </span>
+          </div>
+          <div>
+            4. <span>{mostUsed.length > 3 ? mostUsed[3] : "-"} </span>
+          </div>
+          <div>
+            5. <span>{mostUsed.length > 4 ? mostUsed[4] : "-"} </span>
           </div>
         </div>
       </div>

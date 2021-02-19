@@ -1,6 +1,6 @@
 body {
   font-family: sans-serif;
-  position: relative;
+  margin: 0%;
 }
 body #root {
   background-color: #ffff;
@@ -49,6 +49,7 @@ body #root .input-box textarea {
 
 body #root .buttons {
   margin-top: 40px;
+  padding-bottom: 20px;
 }
 
 body #root .buttons a {
@@ -78,10 +79,9 @@ body #root .input-box .warning {
 }
 
 body #root .counter-results {
-  background-color: rgba(231, 245, 255, 0.25);
+  height: 250px;
   padding-top: 40px;
   padding-bottom: 40px;
-  margin-bottom: 30px;
 }
 
 body #root .counter-results .results {
@@ -99,20 +99,36 @@ body #root .counter-results div span {
   margin-left: 4px;
 }
 
-body #root .footer-div {
-  padding-top: 20px;
-  padding-bottom: 10px;
-  background-color: #222;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+body #root .max-table {
+  text-align: left;
+  width: fit-content;
+  margin-right: auto;
+  margin-left: 42%;
+  height: 250px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
-body #root .footer-div footer span {
+body #root .max-table div {
+  margin-bottom: 14px;
+  font-size: 1.4rem;
+}
+body #root .max-table div span {
+  font-size: 1.4rem;
+  margin-left: 4px;
+}
+
+body #root .footer {
+  color: white;
+  text-align: center;
+  background-color: #222;
+}
+
+body #root .footer span {
   display: block;
   padding: 0 0 10px;
 }
-body #root .footer-div footer a {
+body #root .footer a {
   color: #fff;
   text-decoration: none;
 }
