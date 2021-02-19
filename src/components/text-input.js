@@ -1,142 +1,165 @@
 import React, { Component } from "react";
 
-var lettersc = 0;
+var letterCount = 0;
+var wordCount = 0;
+var textLanguage = "tr";
+let hash = {},
+  pq = [];
+var wordArr = [];
+
+function myFunction() {
+  var x = document.getElementById("text-input-box").value;
+  var wordRegex = /[^a-z\d\s]+/gi;
+  //Get word count without special chars and spaces using regex and set state of 'words'
+
+  wordArr =
+    x
+      .replace(/[\W]+/g, " ")
+      .replace(/([a-z]+)\b[.,]/g, "") //remove commas & fullstops
+      .replace(wordRegex, "")
+      .split(" ") // split words into array elements
+      .filter(function(x) {
+        // remove empty array eements
+        return x !== "";
+      }) || [];
+  for (var i = 0; i < wordArr.length; i++) {
+    var str = wordArr[i];
+    letterCount += str.length;
+
+    hash[str] = hash[str] + 1 || 1;
+    if (str == "I" || str == "can" || str == "and") {
+      language = "en";
+    }
+  }
+
+  for (let key in hash) pq.push([key, hash[key]]);
+  pq.sort((a, b) => b[1] - a[1]);
+
+  wordArr.sort(function(a, b) {
+    return b.length - a.length;
+  });
+  wordCount = wordArr.length;
+}
+
+function findMedian() {
+  var medianL = 0;
+  console.log(wordArr[wordCount / 2]);
+  if (wordCount % 2 == 0) {
+    var str = wordArr[wordCount / 2] + "";
+    medianL = str.length;
+    str = wordArr[wordCount / 2 - 1] + "";
+    medianL += str.length;
+    medianL /= 2;
+  } else {
+    let str = wordArr[wordCount / 2] + "";
+    medianL = str.length;
+  }
+  return medianL;
+}
 
 class TextInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
-      words: 0,
-      letters: 0,
+      words: "",
+      letters: "",
+      language: "",
+      longestWord: "",
+      avarageLength: "",
+      medianLength: "",
+      medianWord: "",
       minWords: "Give some words",
       maxWords: "No more that 500 words allowed",
       numberErr: "No numbers allowed",
       noErr: "",
-      warning: "",
-      inputValue: [],
-      wordArray: [],
-      wordList: []
+      warning: ""
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.clearInput = this.clearInput.bind(this);
-    this.counter = this.counter.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      value: event.target.value,
-      wordList: this.state.wordArray,
-      letters: lettersc
-    });
-    return this.counter();
-  }
-
-  handleKeyPress(event) {
-    var x = event.which || event.keyCode;
-    if(x != 32){
-      lettersc++;
-    }
-  }
-
-  counter(event) {
-    //Get fullstop & comma count with regex and set state
-    var wordRegex = /[^a-z\d\s]+/gi;
-    //Get word count without special chars and spaces using regex and set state of 'words'
-    var wordCounter =
-      this.state.value
-        .replace(/[\W]+/g, " ")
-        .replace(/([a-z]+)\b[.,]/g, "") //remove commas & fullstops
-        .replace(wordRegex, "")
-        .split(" ") // split words into array elements
-        .filter(function(x) {
-          // remove empty array eements
-          return x !== "";
-        }) || [];
-
-    //Set state of counter elements
-    this.setState({
-      words: wordCounter.length
-    });
   }
 
   handleClick(event) {
     //Execute when handleClick is called on an element (button)
     event.preventDefault();
-    var words = this.state.value;
-    var number = words.match(/\d+/g);
 
-    if (number === null) {
-      console.log("Less than 5" + this.state.words);
-      return this.setState({ warning: this.state.minWords });
-    }
-    if (number === null && this.state.words > 500) {
-      //If wordcount is greater than 500 warn user
-      console.log("500+");
-      return this.setState({ warning: this.state.maxWords });
-    }
-    if (number !== null) {
-      //If number detected warn user
-      this.setState({ warning: this.state.numberErr });
-    } else {
-      return this.counter();
-    }
+    myFunction();
+
+    this.setState({
+      words: wordCount,
+      letters: letterCount,
+      language: textLanguage,
+      longestWord: wordArr[0],
+      medianLength: findMedian(),
+      avarageLength: letterCount / wordCount,
+      medianWord: wordArr[(wordCount / 2) | 0] + ""
+    });
   }
 
   clearInput(event) {
     //Clear counters and table
-    lettersc = 0;
+    letterCount = 0;
+    document.getElementById("text-input-box").value = "";
     event.preventDefault();
     this.setState({
-      value: "",
       letters: 0,
       words: 0,
       letters: 0,
-      warning: "",
-      wordArray: "",
-      wordList: []
+      warning: ""
     });
   }
 
   render() {
     return (
-      <div className=" input-box ">
-        <div className="warning">
-          <span>{this.state.warning}</span>
-        </div>
-        <form className="form-input-box">
-          <textarea
-            id="text-input-box"
-            className="form-control"
-            ref="inputBox"
-            name="textarea"
-            rows="5"
-            cols="30"
-            onChange={this.handleChange}
-            onKeyPress={this.handleKeyPress}
-            type="text"
-            value={this.state.value}
-            placeholder="Type a sentence of 5 words or more to get started... "
-          />
-        </form>
-        <div className="buttons">
-          <a onClick={this.handleClick} className="btn">
-            Calculate
-          </a>
-
-          <a onClick={this.clearInput} className="btn">
-            Clear
-          </a>
-        </div>
-
-        <div className="counter-results">
-          <div>
-            Number of Words: <span>{this.state.words}, </span>
+      <div>
+        <div className=" input-box ">
+          <div className="warning">
+            <span>{this.state.warning}</span>
           </div>
-          <div>
-            Number of Letters: <span>{this.state.letters}, </span>
+          <form className="form-input-box">
+            <textarea
+              id="text-input-box"
+              className="form-control"
+              ref="inputBox"
+              name="textarea"
+              rows="5"
+              cols="30"
+              type="text"
+              placeholder="Type a sentence of 5 words or more to get started... "
+            />
+          </form>
+          <div className="buttons">
+            <a onClick={this.handleClick} className="btn">
+              Calculate
+            </a>
+
+            <a onClick={this.clearInput} className="btn">
+              Clear
+            </a>
+          </div>
+        </div>
+        <div className="counter-results">
+          <div className="results">
+            <div>
+              Number of Words: <span>{this.state.words} </span>
+            </div>
+            <div>
+              Number of Letters: <span>{this.state.letters} </span>
+            </div>
+            <div>
+              Language: <span>{this.state.language} </span>
+            </div>
+            <div>
+              Longest Word: <span>{this.state.longestWord} </span>
+            </div>
+            <div>
+              Avarage Length: <span>{this.state.avarageLength} </span>
+            </div>
+            <div>
+              Median Length: <span>{this.state.medianLength} </span>
+            </div>
+            <div>
+              Median Word: <span>{this.state.medianWord} </span>
+            </div>
           </div>
         </div>
       </div>

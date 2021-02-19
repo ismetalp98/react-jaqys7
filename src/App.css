@@ -2,12 +2,11 @@ body {
   font-family: sans-serif;
 }
 body #root {
-  background-color: #f5f5f5;
+  background-color: #ffff;
 }
 body #root .app {
   text-align: center;
   font-size: 1em;
-  background-color: #e7f7ff;
   height: 100vh;
 }
 
@@ -25,16 +24,19 @@ body #root .intro {
 }
 
 body #root .input-box {
-  margin-top: 40px;
+  background-color: #e7f7ff;
   margin-left: auto;
   margin-right: auto;
-  height: 30%;
-  width: 50%;
+  height: fit-content;
+  width: 100%;
 }
 
 body #root .input-box form {
-  width: 100%;
-  height: 50%;
+  width: 50%;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -45,7 +47,7 @@ body #root .input-box textarea {
 }
 
 body #root .buttons {
-  margin: 40px;
+  margin-top: 40px;
 }
 
 body #root .buttons a {
@@ -74,11 +76,27 @@ body #root .input-box .warning {
   line-height: 0.8;
 }
 
-body #root .input-box .counter-results {
-  margin-bottom: 20px;
+body #root .counter-results {
+  background-color: rgba(231, 245, 255, 0.25);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
 }
-body #root .input-box .counter-results div {
-  display: inline;
+
+body #root .counter-results .results {
+  text-align: left;
+  width: fit-content;
+  margin-right: auto;
+  margin-left: 42%;
+  
+}
+body #root .counter-results div {
+  margin-bottom: 14px;
+  font-size: 1.4rem;
+}
+body #root .counter-results div span {
+  font-size: 1.4rem;
+  margin-left: 4px;
 }
 body #root .table-responsive {
   margin-top: 20px;
