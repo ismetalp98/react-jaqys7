@@ -88,7 +88,6 @@ body #root .counter-results .results {
   width: fit-content;
   margin-right: auto;
   margin-left: 42%;
-  
 }
 body #root .counter-results div {
   margin-bottom: 14px;
@@ -98,15 +97,12 @@ body #root .counter-results div span {
   font-size: 1.4rem;
   margin-left: 4px;
 }
-body #root .table-responsive {
-  margin-top: 20px;
+
+body #root .footer-div {
+  background-color: #000;
+  margin-bottom: 100px;
 }
-body #root .table-responsive div {
-  margin: 5px;
-}
-body #root .table-responsive table thead tr th {
-  text-align: center;
-}
+
 body #root footer span {
   display: block;
   padding: 0 0 10px;

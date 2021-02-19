@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Footer extends Component {
   render() {
     return (
-      <div className=" footer">
+      <div className="footer-div">
         <footer>
           <span>
             <a rel="author" target="_blank">
