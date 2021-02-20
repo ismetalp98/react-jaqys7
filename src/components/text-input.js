@@ -25,8 +25,8 @@ function myFunction() {
     letterCount += str.length;
 
     hash[str] = hash[str] + 1 || 1;
-    if (str == "I" || str == "can" || str == "and") {
-      language = "en";
+    if (str == "I" || str == "can" || str == "and" || str == "the") {
+      textLanguage = "en";
     }
   }
 
@@ -35,7 +35,7 @@ function myFunction() {
 
   for (var i = 0; i < pq.length; i++) {
     let a = pq[i];
-    let b = a[0] + " occures " + a[1] + " times";
+    let b = a[0] + " -> occures " + a[1] + " -> times";
     mostUsed[i] = b;
   }
   wordArr.sort(function(a, b) {
@@ -129,7 +129,7 @@ class TextInput extends Component {
               rows="5"
               cols="30"
               type="text"
-              placeholder="Type a sentence of 5 words or more to get started... "
+              placeholder="Type a sentence to get started... "
             />
           </form>
           <div className="buttons">
