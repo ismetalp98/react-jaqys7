@@ -15,7 +15,7 @@ function myFunction() {
   wordArr =
     x
       .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
-      .split(" ")
+      .split(/\s+/)
       .filter(function(x) {
         return x !== "";
       }) || [];
@@ -55,6 +55,7 @@ class TextInput extends Component {
       avarageLength: "",
       medianLength: "",
       medianWord: "",
+      readtime: "",
       minWords: "Give some words",
       maxWords: "No more that 500 words allowed",
       numberErr: "No numbers allowed",
@@ -82,8 +83,9 @@ class TextInput extends Component {
       language: textLanguage,
       longestWord: wordArr[0],
       medianLength: wordArr[(wordCount / 2) | 0].length,
-      avarageLength: letterCount / wordCount,
-      medianWord: wordArr[(wordCount / 2) | 0] + ""
+      avarageLength: (letterCount / wordCount) | 0,
+      medianWord: wordArr[(wordCount / 2) | 0] + "",
+      readtime: ((wordCount * 0.3) | 0) + " seconds"
     });
   }
 
@@ -149,6 +151,9 @@ class TextInput extends Component {
             </div>
             <div>
               Number of Letters: <span>{this.state.letters} </span>
+            </div>
+            <div>
+              Avarage Reading Time: <span>{this.state.readtime} </span>
             </div>
             <div>
               Language: <span>{this.state.language} </span>
