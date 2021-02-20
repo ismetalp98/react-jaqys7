@@ -167,21 +167,23 @@ class TextInput extends Component {
             </div>
           </div>
         </div>
-        <div className="max-table">
-          <div>
-            1. <span>{mostUsed.length > 0 ? mostUsed[0] : "-"} </span>
-          </div>
-          <div>
-            2. <span>{mostUsed.length > 1 ? mostUsed[1] : "-"} </span>
-          </div>
-          <div>
-            3. <span>{mostUsed.length > 2 ? mostUsed[2] : "-"} </span>
-          </div>
-          <div>
-            4. <span>{mostUsed.length > 3 ? mostUsed[3] : "-"} </span>
-          </div>
-          <div>
-            5. <span>{mostUsed.length > 4 ? mostUsed[4] : "-"} </span>
+        <div className="table">
+          <div className="max-table">
+            <div>
+              1. <span>{mostUsed.length > 0 ? mostUsed[0] : "-"} </span>
+            </div>
+            <div>
+              2. <span>{mostUsed.length > 1 ? mostUsed[1] : "-"} </span>
+            </div>
+            <div>
+              3. <span>{mostUsed.length > 2 ? mostUsed[2] : "-"} </span>
+            </div>
+            <div>
+              4. <span>{mostUsed.length > 3 ? mostUsed[3] : "-"} </span>
+            </div>
+            <div>
+              5. <span>{mostUsed.length > 4 ? mostUsed[4] : "-"} </span>
+            </div>
           </div>
         </div>
       </div>

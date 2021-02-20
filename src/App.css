@@ -37,7 +37,6 @@ body #root .input-box form {
   height: 250px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -59,7 +58,7 @@ body #root .buttons a {
   align-items: center;
   font-size: 1em;
   margin-top: 23px;
-  box-shadow: 0 12px 15px 0 rgb(255 99 142 / 20%);
+  box-shadow: 0 4px 6px 0 #33323061;
   margin: 20px;
   color: #fff;
   background-color: #222;
@@ -73,12 +72,14 @@ body #root .buttons a:hover {
 }
 
 body #root .input-box .warning {
+  padding-top: 40px;
   color: red;
   height: 1em;
   line-height: 0.8;
 }
 
 body #root .counter-results {
+  background-color: #e7f5ff96;
   height: 250px;
   padding-top: 40px;
   padding-bottom: 40px;
@@ -99,14 +100,16 @@ body #root .counter-results div span {
   margin-left: 4px;
 }
 
-body #root .max-table {
-  text-align: left;
-  width: fit-content;
-  margin-right: auto;
-  margin-left: 42%;
-  height: 250px;
+body #root .table {
+  background-color: #e7f5ff4f;
+  height: 200px;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+body #root .table .max-table {
+  text-align: left;
+  margin-left: 42%;
 }
 
 body #root .max-table div {
@@ -119,9 +122,9 @@ body #root .max-table div span {
 }
 
 body #root .footer {
-  color: white;
+  padding-top: 30px;
+  color: #222;
   text-align: center;
-  background-color: #222;
 }
 
 body #root .footer span {
@@ -129,7 +132,7 @@ body #root .footer span {
   padding: 0 0 10px;
 }
 body #root .footer a {
-  color: #fff;
+  color: #222;
   text-decoration: none;
 }
 

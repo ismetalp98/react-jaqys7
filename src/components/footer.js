@@ -6,12 +6,12 @@ class Footer extends Component {
       <div className="footer">
         <span>
           <a rel="author" target="_blank">
-            Designed &amp; developed by ben :)
+            Designed &amp; developed by İsmet Alp Eren
           </a>{" "}
         </span>
         <span>
           <a
-            href="https://github.com/ismetalp98"
+            href="https://github.com/ismetalp98/react-jaqys7"
             title="View Github Repo"
             target="_blank"
           >
