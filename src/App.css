@@ -16,11 +16,7 @@ body #root .header {
   color: white;
 }
 
-body #root .intro {
-  font-size: 2rem;
-  font-weight: 600;
-  display: inline-block;
-  line-height: 2em;
+body #root .header .image {
 }
 
 body #root .input-box {
@@ -39,13 +35,13 @@ body #root .input-box form {
 }
 
 body #root .input-box textarea {
-  min-height: 250px;
+  min-height: 20vh;
   width: 50vw;
   padding: 10px;
 }
 
 body #root .buttons {
-  margin-top: 40px;
+  margin-top: 30px;
   padding-bottom: 20px;
 }
 
@@ -78,14 +74,15 @@ body #root .input-box .warning {
 
 body #root .counter-results {
   background-color: #e7f5ff96;
-  height: 250px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  height: fit-content;
+  padding-top: 3vh;
+  padding-bottom: 2vh;
 }
 
 body #root .counter-results .results {
   text-align: left;
   width: fit-content;
+  height: fit-content;
   margin-right: auto;
   margin-left: 42%;
 }
@@ -93,14 +90,10 @@ body #root .counter-results div {
   margin-bottom: 14px;
   font-size: 1.4rem;
 }
-body #root .counter-results div span {
-  font-size: 1.4rem;
-  margin-left: 4px;
-}
 
 body #root .table {
   background-color: #e7f5ff4f;
-  height: 200px;
+  height: fit-content;
   padding-top: 40px;
   padding-bottom: 40px;
 }
