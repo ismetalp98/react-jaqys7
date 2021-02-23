@@ -106,7 +106,8 @@ class TextInput extends Component {
       avarageLength: "",
       medianLength: "",
       medianWord: "",
-      warning: ""
+      warning: "",
+      readtime: ""
     });
   }
 

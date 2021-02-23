@@ -12,11 +12,18 @@ body #root .app {
 }
 
 body #root .header {
+  position: relative;
   background-color: #e7f7ff;
   color: white;
 }
 
-body #root .header .image {
+body #root .header .tag {
+  background-color: transparent;
+  width: 10%;
+  height: 60%;
+  position: absolute;
+  left: 10px;
+  top: 20%;
 }
 
 body #root .input-box {
@@ -55,7 +62,7 @@ body #root .buttons a {
   box-shadow: 0 4px 6px 0 #33323061;
   margin: 20px;
   color: #fff;
-  background-color: #222;
+  background-color: #01acfe;
 }
 body #root .buttons a:active,
 body #root .buttons a:hover {
